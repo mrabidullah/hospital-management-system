@@ -76,6 +76,28 @@ HOSPITAL PROJECT
 └── manage.py  
 
 ---
+🧑 Patient Module
+Registration
+Dashboard
+Appointment booking
+Cancel appointment
+Medical history
+👨‍⚕️ Staff Module
+Login system
+Dashboard
+Appointment management
+Patient management
+📅 Appointment Module
+Create / Update / Delete appointments
+Status tracking
+🔐 Authentication System
+Staff login/logout
+Session-based patient login
+Protected dashboards
+📊 Appointment Status
+Scheduled
+Completed
+Cancelled
 
 ## 🗄️ Database (PostgreSQL)
 
@@ -108,25 +130,4 @@ python manage.py createsuperuser
 python manage.py runserver
 
 
-🧑 Patient Module
-Registration
-Dashboard
-Appointment booking
-Cancel appointment
-Medical history
-👨‍⚕️ Staff Module
-Login system
-Dashboard
-Appointment management
-Patient management
-📅 Appointment Module
-Create / Update / Delete appointments
-Status tracking
-🔐 Authentication System
-Staff login/logout
-Session-based patient login
-Protected dashboards
-📊 Appointment Status
-Scheduled
-Completed
-Cancelled
+
