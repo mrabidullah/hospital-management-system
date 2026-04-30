@@ -1,0 +1,651 @@
+{% extends "header_footer.html" %}
+{% block homepage %}
+
+<section class="relative min-h-[90vh] sm:min-h-[80vh] bg-gray-900 text-white overflow-hidden shadow-2xl l">
+
+    <img src="/static/hospital.jpg"
+        alt="Hospital Building"
+        class="absolute inset-0 w-full h-full object-cover object-center  z-0">
+
+    
+    <div class="absolute inset-0 bg-black/60 sm:bg-black/50 md:bg-black/40 z-10 "></div>
+
+    
+    <div class="absolute inset-0 opacity-20 z-[15]">
+        <div class="absolute top-20 left-5 sm:left-10 w-40 sm:w-64 h-40 sm:h-64 bg-white/20 rounded-full"></div>
+        <div class="absolute bottom-20 right-5 sm:right-10 w-60 sm:w-96 h-60 sm:h-96 bg-cyan-300/30 rounded-full"></div>
+    </div>
+
+    
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+            
+            <div class="text-white">
+                
+                <div class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm sm:text-base font-medium mb-6 shadow-lg">
+                    <i class="fas fa-star text-yellow-300 mr-2"></i>
+                    <span>Trusted by 500+ Hospitals</span>
+                </div>
+
+            
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight" style="text-shadow: 2px 2px 6px rgba(0,0,0,0.5);">
+                    Advanced
+                    <span class="text-blue-200 block mt-2" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">Hospital Management System</span>
+                </h1>
+
+                
+                <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-2xl" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+                    Streamline hospital operations and enhance patient care with cutting-edge technology.
+                </p>
+
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-8 sm:mb-12">
+                    <a href="#features" 
+                        class="w-full sm:w-auto group bg-white text-blue-700 hover:bg-blue-50 font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center justify-center transform hover:scale-105">
+                        <i class="fas fa-search mr-3 text-xl"></i>
+                        <span>Explore Features</span>
+                    </a>
+                    <a href="/demo" 
+                        class="w-full sm:w-auto group bg-transparent border-2 border-white hover:bg-white/10 font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-play-circle mr-3"></i>
+                        <span>View Live Demo</span>
+                    </a>
+                </div>
+
+            
+                <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 justify-start">
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <i class="fas fa-check-circle text-green-400 text-lg sm:text-xl"></i>
+                        <span class="text-sm sm:text-base md:text-lg font-medium">99.9% Uptime</span>
+                    </div>
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <i class="fas fa-check-circle text-green-400 text-lg sm:text-xl"></i>
+                        <span class="text-sm sm:text-base md:text-lg font-medium">HIPAA Compliant</span>
+                    </div>
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <i class="fas fa-check-circle text-green-400 text-lg sm:text-xl"></i>
+                        <span class="text-sm sm:text-base md:text-lg font-medium">24/7 Support</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="py-12 sm:py-16 bg-gradient-to-r from-blue-800 to-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            <div class="transform hover:scale-105 transition-transform duration-300 p-4">
+                <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">500+</div>
+                <div class="text-sm sm:text-base opacity-90">Healthcare Partners</div>
+            </div>
+            <div class="transform hover:scale-105 transition-transform duration-300 p-4">
+                <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">2M+</div>
+                <div class="text-sm sm:text-base opacity-90">Patients Managed</div>
+            </div>
+            <div class="transform hover:scale-105 transition-transform duration-300 p-4">
+                <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">99.9%</div>
+                <div class="text-sm sm:text-base opacity-90">System Uptime</div>
+            </div>
+            <div class="transform hover:scale-105 transition-transform duration-300 p-4">
+                <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">24/7</div>
+                <div class="text-sm sm:text-base opacity-90">Expert Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16">
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">PROCESS</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Simple Three-Step Process
+            </h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                From registration to treatment, we've simplified healthcare access
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+            <div class="text-center">
+                <div class="relative mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-50 to-blue-100 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-user-plus text-3xl text-blue-600"></i>
+                    </div>
+                    <div class="absolute top-0 right-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        1
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Register Account</h3>
+                <p class="text-gray-600">
+                    Create your secure patient account in under 2 minutes
+                </p>
+            </div>
+            
+            
+            <div class="text-center">
+                <div class="relative mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-50 to-green-100 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-calendar-check text-3xl text-green-600"></i>
+                    </div>
+                    <div class="absolute top-0 right-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        2
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Book Appointment</h3>
+                <p class="text-gray-600">
+                    Choose doctor, select time, and book instantly online
+                </p>
+            </div>
+            
+            
+            <div class="text-center">
+                <div class="relative mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-50 to-purple-100 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-stethoscope text-3xl text-purple-600"></i>
+                    </div>
+                    <div class="absolute top-0 right-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        3
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Get Treatment</h3>
+                <p class="text-gray-600">
+                    Visit doctor, access records, and manage healthcare online
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="features" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16">
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">KEY FEATURES</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Complete Hospital Management Suite
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                End-to-end solutions covering every aspect of modern healthcare delivery
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-blue-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-calendar-alt text-2xl text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Appointment Management</h3>
+                        <p class="text-gray-600">Online booking with real-time doctor availability</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">24/7 booking availability</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Automated reminders</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Doctor ratings & reviews</span>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-green-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-file-medical text-2xl text-green-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Electronic Health Records</h3>
+                        <p class="text-gray-600">Secure digital records accessible anytime</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Complete medical history</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Lab test results online</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Prescription history</span>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-purple-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-credit-card text-2xl text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Billing & Insurance</h3>
+                        <p class="text-gray-600">Automated billing with insurance integration</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Online payment gateway</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Insurance claim processing</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Digital invoices</span>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-red-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-ambulance text-2xl text-red-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Emergency Management</h3>
+                        <p class="text-gray-600">Real-time emergency tracking and alerts</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Priority case management</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Resource allocation</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Real-time status updates</span>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-yellow-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-pills text-2xl text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Pharmacy Management</h3>
+                        <p class="text-gray-600">Complete pharmacy inventory and sales</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Stock management</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Prescription tracking</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Supplier management</span>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="flex items-start mb-6">
+                    <div class="bg-indigo-50 p-4 rounded-xl mr-5">
+                        <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Analytics Dashboard</h3>
+                        <p class="text-gray-600">Real-time insights and performance metrics</p>
+                    </div>
+                </div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Live patient statistics</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Financial reports</span>
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span class="text-sm">Performance analytics</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">OUR DOCTORS</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Meet Our Specialist Doctors
+            </h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                Book appointments with our experienced medical specialists
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-center mb-4">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user-md text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Dr. Sarah Johnson</h3>
+                    <p class="text-gray-600 text-sm">Cardiologist</p>
+                    <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium mt-2">
+                        <i class="fas fa-circle text-green-500 mr-1 text-xs"></i>
+                        Available Today
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="/book/doctor-1" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm">
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-center mb-4">
+                    <div class="w-20 h-20 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user-md text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Dr. Michael Chen</h3>
+                    <p class="text-gray-600 text-sm">Neurologist</p>
+                    <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium mt-2">
+                        <i class="fas fa-circle text-green-500 mr-1 text-xs"></i>
+                        Available Today
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="/book/doctor-2" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm">
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-center mb-4">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user-md text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Dr. Maria Rodriguez</h3>
+                    <p class="text-gray-600 text-sm">Pediatrician</p>
+                    <div class="inline-flex items-center px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium mt-2">
+                        <i class="fas fa-clock text-yellow-500 mr-1 text-xs"></i>
+                        Tomorrow
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="/book/doctor-3" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm">
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-center mb-4">
+                    <div class="w-20 h-20 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user-md text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Dr. James Wilson</h3>
+                    <p class="text-gray-600 text-sm">Orthopedic Surgeon</p>
+                    <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium mt-2">
+                        <i class="fas fa-circle text-green-500 mr-1 text-xs"></i>
+                        Available Today
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="/book/doctor-4" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm">
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="/doctors" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800">
+                <span>View All Doctors (50+)</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">WHY CHOOSE US</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-8">
+                    Built for Healthcare Excellence
+                </h2>
+                
+                <div class="space-y-8">
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-green-100 p-3 rounded-xl">
+                                <i class="fas fa-shield-alt text-xl text-green-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">HIPAA Compliant Security</h3>
+                            <p class="text-gray-600">
+                                Bank-level security with end-to-end encryption and strict access controls.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-blue-100 p-3 rounded-xl">
+                                <i class="fas fa-bolt text-xl text-blue-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Implementation</h3>
+                            <p class="text-gray-600">
+                                Go live in weeks with our streamlined onboarding and training process.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-purple-100 p-3 rounded-xl">
+                                <i class="fas fa-headset text-xl text-purple-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">24/7 Expert Support</h3>
+                            <p class="text-gray-600">
+                                Dedicated healthcare IT specialists available round-the-clock.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Doctor using hospital management system" 
+                     class="rounded-2xl shadow-xl w-full h-auto">
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-lg max-w-xs">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-3 rounded-xl mr-4">
+                            <i class="fas fa-award text-xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold">#1 Rated</div>
+                            <div class="text-gray-600 text-sm">Healthcare Management System 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">TESTIMONIALS</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Trusted by Healthcare Leaders
+            </h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                See what our clients say about our hospital management system
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+           
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user-md text-xl text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Dr. Sarah Johnson</h4>
+                        <p class="text-gray-600 text-sm">Medical Director</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic mb-6">
+                    "This system reduced patient wait times by 40% and improved our staff efficiency dramatically. The implementation was seamless."
+                </p>
+                <div class="flex text-yellow-400 text-lg">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+        
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user-tie text-xl text-green-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Michael Chen</h4>
+                        <p class="text-gray-600 text-sm">Hospital Administrator</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic mb-6">
+                    "Our operational costs decreased by 30% in the first year. The billing module alone saved us 200+ hours monthly."
+                </p>
+                <div class="flex text-yellow-400 text-lg">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user-nurse text-xl text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Emily Rodriguez</h4>
+                        <p class="text-gray-600 text-sm">Nursing Director</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic mb-6">
+                    "Patient satisfaction scores increased by 35% after implementation. The system is intuitive and easy to use for all staff."
+                </p>
+                <div class="flex text-yellow-400 text-lg">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-20 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
+            Ready to Transform Your Healthcare Facility?
+        </h2>
+        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            Join 500+ healthcare providers delivering exceptional patient care with our advanced platform.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+            <a href="/contact" 
+                class="bg-white hover:bg-blue-50 text-blue-700 font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center justify-center transform hover:scale-105">
+                <i class="fas fa-calendar-check mr-3 text-xl"></i>
+                <span>Schedule Free Demo</span>
+            </a>
+            <a href="/contact" 
+                class="bg-transparent border-2 border-white hover:bg-white/10 font-bold py-4 px-10 rounded-xl transition-all duration-300 flex items-center justify-center">
+                <i class="fas fa-phone-alt mr-3 text-xl"></i>
+                <span>Contact Sales Team</span>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <div class="bg-white/10 p-4 rounded-xl">
+                <i class="fas fa-gem text-2xl text-blue-300 mb-2"></i>
+                <div class="font-bold">No Setup Fees</div>
+                <div class="text-sm text-blue-200">Free trial available</div>
+            </div>
+            <div class="bg-white/10 p-4 rounded-xl">
+                <i class="fas fa-clock text-2xl text-blue-300 mb-2"></i>
+                <div class="font-bold">Fast Implementation</div>
+                <div class="text-sm text-blue-200">Go live in 2-4 weeks</div>
+            </div>
+            <div class="bg-white/10 p-4 rounded-xl">
+                <i class="fas fa-shield-alt text-2xl text-blue-300 mb-2"></i>
+                <div class="font-bold">HIPAA Compliant</div>
+                <div class="text-sm text-blue-200">Bank-level security</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock homepage %}

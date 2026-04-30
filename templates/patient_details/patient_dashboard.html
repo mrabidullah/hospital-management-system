@@ -1,0 +1,255 @@
+{% extends "header_footer.html" %}
+{% block homepage %}
+
+
+    <!-- Welcome Banner -->
+    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl mt-10shadow-lg p-6 mb-8 text-white">
+        <h2 class="text-2xl font-bold mb-2">Welcome, {{ patient.first_name }}! 👋</h2>
+        <p class="text-blue-100">Your health information and medical records</p>
+    </div>
+
+    <!-- Patient Information Card -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
+            <h2 class="text-xl font-semibold text-white flex items-center">
+                <i class="fas fa-id-card mr-2"></i> Patient Information
+            </h2>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500 mb-1">Full Name</p>
+                    <p class="font-medium text-lg">{{ patient.first_name }} {{ patient.last_name }}</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500 mb-1">Date of Birth</p>
+                    <p class="font-medium">{{ patient.date_of_birth }}</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500 mb-1">Gender</p>
+                    <p class="font-medium">{{ patient.gender }}</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500 mb-1">Blood Group</p>
+                    <p class="font-medium"><span class="px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-bold">{{ patient.blood_group }}</span></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500 mb-1">Contact</p>
+                    <p class="font-medium">{{ patient.contact_number }}</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                    <p class="text-sm text-gray-500 mb-1">Email</p>
+                    <p class="font-medium break-all">{{ patient.email }}</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                    <p class="text-sm text-gray-500 mb-1">Address</p>
+                    <p class="font-medium">{{ patient.address }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctor Information Card (if assigned) -->
+    {% if patient.primary_doctor %}
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4">
+            <h2 class="text-xl font-semibold text-white flex items-center">
+                <i class="fas fa-user-md mr-2"></i> Your Primary Doctor
+            </h2>
+        </div>
+        <div class="p-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div class="bg-green-100 rounded-full p-4">
+                    <i class="fas fa-stethoscope text-green-600 text-4xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800">Dr. {{ patient.primary_doctor.first_name }} {{ patient.primary_doctor.last_name }}</h3>
+                    <p class="text-lg text-green-600">{{ patient.primary_doctor.specialization }}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-gray-400 mr-2"></i>
+                            <span>{{ patient.primary_doctor.contact_number }}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <span>{{ patient.primary_doctor.email }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Book Appointment Form Section -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4">
+            <h2 class="text-xl font-semibold text-white flex items-center">
+                <i class="fas fa-calendar-plus mr-2"></i> Book New Appointment
+            </h2>
+        </div>
+        <div class="p-6">
+            <form method="POST" action="{% url 'book_appointment' %}">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Doctor Selection -->
+                    <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-user-md text-green-500 mr-1"></i> Select Doctor *
+                        </label>
+                        <select name="doctor" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option value="">Choose a doctor</option>
+                            {% for doctor in doctors %}
+                                <option value="{{ doctor.id }}">
+                                    Dr. {{ doctor.first_name }} {{ doctor.last_name }} - {{ doctor.specialization }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <!-- Date Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-calendar text-green-500 mr-1"></i> Appointment Date *
+                        </label>
+                        <input type="date" name="appointment_date" required min="{{ today }}"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    
+                    <!-- Time Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-clock text-green-500 mr-1"></i> Preferred Time *
+                        </label>
+                        <select name="appointment_time" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                            <option value="">Select time</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Reason (Full width) -->
+                    <div class="md:col-span-2 lg:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-notes-medical text-green-500 mr-1"></i> Reason for Visit *
+                        </label>
+                        <textarea name="reason" rows="3" required 
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                  placeholder="Please describe your symptoms or reason for appointment"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="mt-6 flex justify-end">
+                    <button type="submit" 
+                            class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-lg font-medium hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 flex items-center space-x-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Book Appointment</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Appointment Info -->
+        <div class="bg-green-50 px-6 py-4 border-t border-green-100">
+            <div class="flex items-start space-x-3">
+                <i class="fas fa-info-circle text-green-500 mt-1"></i>
+                <div class="text-sm text-green-800">
+                    <p class="font-medium">Appointment Guidelines:</p>
+                    <ul class="list-disc list-inside mt-1 space-y-1">
+                        <li>Please arrive 15 minutes before your appointment</li>
+                        <li>Bring your ID and insurance card</li>
+                        <li>Cancellations must be made at least 24 hours in advance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Medical Records Section -->
+    <div id="record" class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
+            <h2 class="text-xl font-semibold text-white flex items-center">
+                <i class="fas fa-notes-medical mr-2"></i> Medical Records
+            </h2>
+        </div>
+        
+        {% if medical_records %}
+            <div class="divide-y divide-gray-200">
+                {% for record in medical_records %}
+                    <div class="p-6 hover:bg-gray-50 transition-colors">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-100 rounded-full p-3">
+                                    <i class="fas fa-user-md text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Dr. {{ record.doctor.first_name }} {{ record.doctor.last_name }}</h3>
+                                    <p class="text-sm text-gray-500">{{ record.visit_date|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                            <span class="mt-2 md:mt-0 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                Visit #{{ forloop.revcounter }}
+                            </span>
+                        </div>
+                        
+                        <div class="ml-14 space-y-3">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Diagnosis</p>
+                                <p class="text-gray-800">{{ record.diagnosis }}</p>
+                            </div>
+                            
+                            {% if record.prescription %}
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Prescription</p>
+                                <p class="text-gray-800">{{ record.prescription }}</p>
+                            </div>
+                            {% endif %}
+                            
+                            {% if record.notes %}
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Additional Notes</p>
+                                <p class="text-gray-800">{{ record.notes }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if not forloop.last %}
+                            <div class="border-t border-gray-200 my-4"></div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="p-16 text-center">
+                <div class="text-gray-300 mb-4">
+                    <i class="fas fa-notes-medical text-7xl"></i>
+                </div>
+                <h3 class="text-xl font-medium text-gray-700 mb-2">No Medical Records Yet</h3>
+                <p class="text-gray-500">Your medical records will appear here after your first visit</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Registration Date -->
+    <div class="mt-6 text-center text-sm text-gray-500">
+        <i class="fas fa-calendar-alt mr-1"></i> Registered on {{ patient.date_registered|date:"F d, Y" }}
+    </div>
+</div>
+
+<script>
+    // Simple mobile menu toggle if needed
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+</script>
+
+{% endblock homepage %}

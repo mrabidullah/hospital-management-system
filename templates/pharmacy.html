@@ -1,0 +1,208 @@
+{% extends "header_footer.html" %}
+{% block homepage %}
+
+<section class="min-h-screen flex items-center text-gray-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                Complete Range of<br>Standard Medicines
+            </h1>
+            <p class="text-xl md:text-2xl max-w-3xl mb-10 opacity-90">
+                Every essential category of WHO-GMP and FDA-approved medicines — from everyday relief to specialized chronic care — always available at City General Hospital Pharmacy.
+            </p>
+            <a href="#categories" class="inline-flex items-center gap-3 px-10 py-4 bg-white text-emerald-700 font-semibold rounded-full hover:shadow-lg transition">
+                Explore All Categories <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-12 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <i class="fa-solid fa-shield-halved text-5xl text-emerald-500 mb-4"></i>
+                <p class="font-bold">100% Genuine</p>
+                <p class="text-sm text-gray-600">Verified Suppliers</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-certificate text-5xl text-emerald-500 mb-4"></i>
+                <p class="font-bold">ISO & GMP Certified</p>
+                <p class="text-sm text-gray-600">Quality Assured</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-boxes-stacked text-5xl text-emerald-500 mb-4"></i>
+                <p class="font-bold">20,000+ Products</p>
+                <p class="text-sm text-gray-600">All Standard Categories</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-clock-rotate-left text-5xl text-emerald-500 mb-4"></i>
+                <p class="font-bold">24/7 Availability</p>
+                <p class="text-sm text-gray-600">Round-the-Clock Service</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories - Expanded -->
+    <section id="categories" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-emerald-600 font-semibold uppercase tracking-wider">Comprehensive Coverage</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4">All Major Medicine Categories</h2>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+                    We stock standard-level, high-quality medicines across every major therapeutic class — ensuring complete care for patients and prescribers.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Pain Relief & Analgesics</h3>
+                    <p class="text-sm text-gray-600">Paracetamol, Ibuprofen, Diclofenac, Tramadol, Opioids</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bacteria"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Antibiotics & Antimicrobials</h3>
+                    <p class="text-sm text-gray-600">Amoxicillin, Azithromycin, Ciprofloxacin, Metronidazole, Antivirals</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Cardiovascular</h3>
+                    <p class="text-sm text-gray-600">Amlodipine, Atorvastatin, Metoprolol, Aspirin, Anticoagulants</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Diabetes & Endocrine</h3>
+                    <p class="text-sm text-gray-600">Metformin, Insulin, Glimepiride, Thyroxine, Steroids</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-lungs"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Respiratory & Asthma</h3>
+                    <p class="text-sm text-gray-600">Salbutamol, Montelukast, Budesonide, Antihistamines</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-stomach"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Gastrointestinal</h3>
+                    <p class="text-sm text-gray-600">Omeprazole, Ondansetron, Antacids, Laxatives, Antidiarrheals</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Neurology & Psychiatry</h3>
+                    <p class="text-sm text-gray-600">Antidepressants, Anticonvulsants, Antipsychotics, Anxiolytics</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Antivirals & Vaccines</h3>
+                    <p class="text-sm text-gray-600">Oseltamivir, Acyclovir, Vaccines, Immunoglobulins</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Ophthalmology</h3>
+                    <p class="text-sm text-gray-600">Eye drops, Antibiotics, Anti-inflammatory, Glaucoma meds</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-child"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Pediatrics</h3>
+                    <p class="text-sm text-gray-600">Child-friendly formulations, Syrups, Vitamins, Fever meds</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Vitamins & Supplements</h3>
+                    <p class="text-sm text-gray-600">Multivitamins, Calcium, Vitamin D, Iron, Omega-3</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-lime-100 text-lime-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Oncology & Supportive Care</h3>
+                    <p class="text-sm text-gray-600">Chemotherapy support, Antiemetics, Growth factors</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-syringe"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Hormones & Contraceptives</h3>
+                    <p class="text-sm text-gray-600">Oral contraceptives, HRT, Thyroid hormones</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-allergies"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Allergy & Immunology</h3>
+                    <p class="text-sm text-gray-600">Antihistamines, Corticosteroids, Immunosuppressants</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bone"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Musculoskeletal & Rheumatology</h3>
+                    <p class="text-sm text-gray-600">NSAIDs, DMARDs, Muscle relaxants, Bisphosphonates</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-3xl card-hover group border hover:border-emerald-200">
+                    <div class="w-16 h-16 bg-fuchsia-100 text-fuchsia-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Dermatology</h3>
+                    <p class="text-sm text-gray-600">Topical steroids, Antifungals, Antibiotics creams</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Only Standard, Verified Medicines</h2>
+            <p class="text-xl max-w-4xl mx-auto opacity-90">
+                All categories stocked from trusted, GMP-certified manufacturers. Full traceability, proper storage (including cold chain), and strict quality checks — ensuring safety and efficacy for every patient.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-emerald-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Get Your Medicines?</h2>
+            <p class="text-xl text-gray-700 mb-10">Upload your prescription — we'll prepare everything quickly and reliably.</p>
+            <button class="px-12 py-5 bg-emerald-600 text-white font-bold text-lg rounded-full hover:bg-emerald-700 shadow-lg flex items-center gap-3 mx-auto">
+                <i class="fa-solid fa-upload text-xl"></i> Upload Prescription Now
+            </button>
+        </div>
+    </section>
+
+{% endblock homepage %}

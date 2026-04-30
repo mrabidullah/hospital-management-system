@@ -1,0 +1,553 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block homepage %}
+
+<style>
+    .stat-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+    .filter-btn.active {
+        background-color: #0033a0;
+        color: white;
+    }
+    .quick-action-btn {
+        transition: all 0.2s ease;
+    }
+    .quick-action-btn:hover {
+        transform: scale(1.05);
+    }
+    .doctor-badge {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+</style>
+
+<!-- ========== MAIN DASHBOARD CONTAINER ========== -->
+<div class="container mx-auto px-4 py-6 max-w-7xl">
+
+    <!-- ===== DOCTOR INFO BANNER (if doctor is logged in) ===== -->
+    {% if is_doctor %}
+    <div class="doctor-badge text-white p-4 rounded-xl shadow-lg mb-6">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <i class="fas fa-user-md text-green-700 text-2xl"></i>
+            </div>
+            <div>
+                <h2 class="text-xl font-bold">{{ doctor_name }}</h2>
+                <p class="text-green-100">{{ doctor_specialization }} • Viewing your patients only</p>
+            </div>
+            <div class="ml-auto bg-green-800 px-4 py-2 rounded-lg">
+                <i class="fas fa-stethoscope mr-2"></i>My Practice
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- ===== WELCOME BANNER ===== -->
+    <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 rounded-2xl shadow-lg mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-2">
+                    <i class="fas fa-hospital text-3xl"></i>
+                    {% if is_doctor %}
+                        Dr. {{ doctor_name }}'s Dashboard
+                    {% else %}
+                        American Hospital Management System
+                    {% endif %}
+                </h1>
+                <p class="text-blue-100 mt-2">
+                    <i class="fas fa-calendar-alt mr-2"></i>{{ today|date:"l, F j, Y" }} 
+                    <i class="fas fa-clock ml-4 mr-2"></i>{{ now|time:"h:i A" }}
+                </p>
+            </div>
+            <div class="flex gap-3 mt-4 md:mt-0">
+                <span class="bg-blue-800 px-4 py-2 rounded-lg flex items-center gap-2">
+                    <i class="fas {% if is_doctor %}fa-user-md{% else %}fa-users{% endif %} mr-2"></i>
+                    {% if is_doctor %}
+                        {{ doctor_specialization }}
+                    {% else %}
+                        Staff: 24 Online
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== STATS CARDS (ALL IN ONE ROW) ===== -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4 mb-8">
+        
+        <!-- Total Patients -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-blue-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">
+                        {% if is_doctor %}My Patients{% else %}Total Patients{% endif %}
+                    </p>
+                    <p class="text-2xl font-bold text-blue-600">{{ total_patients }}</p>
+                </div>
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <i class="fas fa-users text-blue-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Doctors -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-purple-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">
+                        {% if is_doctor %}Your Profile{% else %}Doctors{% endif %}
+                    </p>
+                    <p class="text-2xl font-bold text-purple-600">
+                        {% if is_doctor %}1{% else %}{{ total_doctors }}{% endif %}
+                    </p>
+                </div>
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <i class="fas fa-user-md text-purple-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Nurses -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-pink-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Nurses</p>
+                    <p class="text-2xl font-bold text-pink-600">{{ total_nurses }}</p>
+                </div>
+                <div class="bg-pink-100 p-3 rounded-full">
+                    <i class="fas fa-user-nurse text-pink-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Receptionists -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-orange-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Receptionists</p>
+                    <p class="text-2xl font-bold text-orange-600">{{ total_receptionists }}</p>
+                </div>
+                <div class="bg-orange-100 p-3 rounded-full">
+                    <i class="fas fa-headset text-orange-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Admins -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-indigo-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Admins</p>
+                    <p class="text-2xl font-bold text-indigo-600">{{ total_admins }}</p>
+                </div>
+                <div class="bg-indigo-100 p-3 rounded-full">
+                    <i class="fas fa-user-tie text-indigo-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Appointments -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-green-600">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">
+                        {% if is_doctor %}My Appts{% else %}Total Appts{% endif %}
+                    </p>
+                    <p class="text-2xl font-bold text-green-600">{{ total_appointments }}</p>
+                </div>
+                <div class="bg-green-100 p-3 rounded-full">
+                    <i class="fas fa-calendar-check text-green-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Appointments -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-yellow-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Today</p>
+                    <p class="text-2xl font-bold text-yellow-600">{{ todays_count }}</p>
+                </div>
+                <div class="bg-yellow-100 p-3 rounded-full">
+                    <i class="fas fa-calendar-day text-yellow-600 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-blue-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Upcoming</p>
+                    <p class="text-2xl font-bold text-blue-500">{{ upcoming_count }}</p>
+                </div>
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <i class="fas fa-calendar-week text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancelled -->
+        <div class="stat-card bg-white p-4 rounded-xl shadow border-l-4 border-red-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">Cancelled</p>
+                    <p class="text-2xl font-bold text-red-500">{{ cancelled_count }}</p>
+                </div>
+                <div class="bg-red-100 p-3 rounded-full">
+                    <i class="fas fa-times-circle text-red-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ALERTS SECTION ===== -->
+    {% if upcoming_in_1hour > 0 %}
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-lg">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                    <span class="font-bold">{{ upcoming_in_1hour }} appointments</span> in the next hour!
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- ===== 3-COLUMN LAYOUT: APPOINTMENTS | PATIENTS | STAFF ===== -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- LEFT COLUMN: APPOINTMENTS SECTION -->
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="{% if is_doctor %}bg-green-600{% else %}bg-blue-600{% endif %} p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-calendar-alt"></i>
+                        {% if is_doctor %}My {% endif %}{{ filter_title }}
+                    </h2>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="p-3 bg-gray-50 border-b flex flex-wrap gap-1">
+                    <a href="?filter=today" class="filter-btn px-3 py-1 text-sm rounded-full {% if current_filter == 'today' %}active bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">Today</a>
+                    <a href="?filter=upcoming" class="filter-btn px-3 py-1 text-sm rounded-full {% if current_filter == 'upcoming' %}active bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">Upcoming</a>
+                    <a href="?filter=completed" class="filter-btn px-3 py-1 text-sm rounded-full {% if current_filter == 'completed' %}active bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">Completed</a>
+                    <a href="?filter=cancelled" class="filter-btn px-3 py-1 text-sm rounded-full {% if current_filter == 'cancelled' %}active bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">Cancelled</a>
+                    <a href="?filter=all" class="filter-btn px-3 py-1 text-sm rounded-full {% if current_filter == 'all' %}active bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">All</a>
+                </div>
+
+                <!-- Appointments List -->
+                <div class="divide-y max-h-96 overflow-y-auto">
+                    {% for appointment in appointments|slice:":10" %}
+                    <div class="p-4 hover:bg-gray-50">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-semibold">
+                                    <a href="{% url 'patient_detail' appointment.patient.id %}" class="text-blue-600 hover:underline">
+                                        {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}
+                                    </a>
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    {% if is_doctor %}
+                                        <span class="text-green-600">Your patient</span>
+                                    {% else %}
+                                        Dr. {{ appointment.doctor }}
+                                    {% endif %}
+                                </p>
+                                <p class="text-xs text-gray-500">{{ appointment.reason|truncatechars:30 }}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-medium">{{ appointment.appointment_date|time:"H:i" }}</p>
+                                <span class="text-xs px-2 py-1 rounded-full 
+                                    {% if appointment.status == 'Scheduled' %}bg-green-100 text-green-800
+                                    {% elif appointment.status == 'Completed' %}bg-blue-100 text-blue-800
+                                    {% elif appointment.status == 'Cancelled' %}bg-red-100 text-red-800
+                                    {% endif %}">
+                                    {{ appointment.status }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-4 text-center text-gray-500">No appointments</p>
+                    {% endfor %}
+                </div>
+                
+                <div class="p-3 bg-gray-50 text-center">
+                    <a href="{% url 'appointment_list' %}{% if is_doctor %}?doctor={{ request.user.doctor.id }}{% endif %}" class="text-blue-600 hover:underline text-sm">
+                        View All {% if is_doctor %}My {% endif %}Appointments →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-xl shadow-lg p-4">
+                <h3 class="font-semibold mb-3">⚡ Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    {% if not is_doctor %}
+                    <a href="{% url 'create_patient' %}" class="quick-action-btn bg-blue-50 p-3 rounded-lg text-center hover:bg-blue-100">
+                        <i class="fas fa-user-plus text-blue-600 text-xl mb-1"></i>
+                        <span class="text-xs block">New Patient</span>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'create_appointment' %}" class="quick-action-btn bg-green-50 p-3 rounded-lg text-center hover:bg-green-100">
+                        <i class="fas fa-calendar-plus text-green-600 text-xl mb-1"></i>
+                        <span class="text-xs block">Schedule</span>
+                    </a>
+                    {% if is_doctor %}
+                    <a href="{% url 'appointment_list' %}?doctor={{ request.user.doctor.id }}" class="quick-action-btn bg-purple-50 p-3 rounded-lg text-center hover:bg-purple-100 col-span-2">
+                        <i class="fas fa-calendar-check text-purple-600 text-xl mb-1"></i>
+                        <span class="text-xs block">My Appointments</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- MIDDLE COLUMN: PATIENTS SECTION -->
+        <div class="lg:col-span-1 space-y-6">
+            <!-- Recent Patients -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="{% if is_doctor %}bg-green-600{% else %}bg-purple-600{% endif %} p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-users"></i>
+                        {% if is_doctor %}My Patients{% else %}Recent Patients{% endif %}
+                    </h2>
+                </div>
+
+                <!-- Search Box -->
+                <div class="p-3 bg-gray-50 border-b">
+                    <form method="get" class="flex gap-2">
+                        <input type="text" name="search" value="{{ search_query }}" 
+                               placeholder="{% if is_doctor %}Search my patients...{% else %}Search patients...{% endif %}" 
+                               class="flex-1 px-3 py-2 border rounded-lg text-sm">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Patients List -->
+                <div class="divide-y max-h-96 overflow-y-auto">
+                    {% for patient in patients_list %}
+                    <div class="p-4 hover:bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <span class="font-bold text-blue-600">{{ patient.first_name|first }}{{ patient.last_name|first }}</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold">
+                                    <a href="{% url 'patient_detail' patient.id %}" class="{% if is_doctor %}text-green-600{% else %}text-purple-600{% endif %} hover:underline">
+                                        {{ patient.first_name }} {{ patient.last_name }}
+                                    </a>
+                                </p>
+                                <p class="text-xs text-gray-500">{{ patient.email }}</p>
+                                <p class="text-xs text-gray-500">{{ patient.contact_number }}</p>
+                            </div>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                                ID: {{ patient.id }}
+                            </span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-4 text-center text-gray-500">
+                        {% if is_doctor %}No patients found{% else %}No patients found{% endif %}
+                    </p>
+                    {% endfor %}
+                </div>
+
+                <div class="p-3 bg-gray-50 text-center">
+                    <a href="{% url 'patient_list' %}" class="{% if is_doctor %}text-green-600{% else %}text-purple-600{% endif %} hover:underline text-sm">
+                        View All {% if is_doctor %}My {% endif %}Patients →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: STAFF SECTION (Doctors, Nurses, Receptionists, Admins) -->
+        <div class="lg:col-span-1 space-y-6">
+            
+            <!-- DOCTORS SECTION -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-green-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-user-md"></i>
+                        {% if is_doctor %}Colleagues On Duty{% else %}Doctors On Duty{% endif %}
+                    </h2>
+                </div>
+                <div class="divide-y max-h-60 overflow-y-auto">
+                    {% for doctor in doctors %}
+                    <div class="p-3 hover:bg-gray-50 {% if is_doctor and doctor.email == request.user.email %}bg-green-50{% endif %}">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 {% if is_doctor and doctor.email == request.user.email %}bg-green-200{% else %}bg-green-100{% endif %} rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-md text-xs {% if is_doctor and doctor.email == request.user.email %}text-green-700{% else %}text-green-600{% endif %}"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold">
+                                    Dr. {{ doctor.first_name }} {{ doctor.last_name }}
+                                    {% if is_doctor and doctor.email == request.user.email %}
+                                        <span class="text-xs bg-green-600 text-white px-1.5 py-0.5 rounded-full ml-1">You</span>
+                                    {% endif %}
+                                </p>
+                                <p class="text-xs text-gray-500">{{ doctor.specialization|truncatechars:20 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-3 text-center text-gray-500 text-sm">No doctors available</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- NURSES SECTION -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-pink-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-user-nurse"></i>
+                        Nurses On Duty ({{ total_nurses }})
+                    </h2>
+                </div>
+                <div class="divide-y max-h-48 overflow-y-auto">
+                    {% for nurse in nurses %}
+                    <div class="p-3 hover:bg-gray-50">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-nurse text-pink-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold">{{ nurse.first_name }} {{ nurse.last_name }}</p>
+                                <p class="text-xs text-gray-500">{{ nurse.contact_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-3 text-center text-gray-500 text-sm">No nurses available</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- RECEPTIONISTS SECTION -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-orange-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-headset"></i>
+                        Receptionists ({{ total_receptionists }})
+                    </h2>
+                </div>
+                <div class="divide-y max-h-48 overflow-y-auto">
+                    {% for receptionist in receptionists %}
+                    <div class="p-3 hover:bg-gray-50">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-headset text-orange-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold">{{ receptionist.first_name }} {{ receptionist.last_name }}</p>
+                                <p class="text-xs text-gray-500">{{ receptionist.contact_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-3 text-center text-gray-500 text-sm">No receptionists available</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- ADMIN SECTION -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-purple-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-user-tie"></i>
+                        Administrators ({{ total_admins }})
+                    </h2>
+                </div>
+                <div class="divide-y max-h-48 overflow-y-auto">
+                    {% for admin in admins %}
+                    <div class="p-3 hover:bg-gray-50">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-tie text-purple-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold">{{ admin.first_name }} {{ admin.last_name }}</p>
+                                <p class="text-xs text-gray-500">{{ admin.contact_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="p-3 text-center text-gray-500 text-sm">No administrators available</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Staff Summary Card -->
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-4">
+                <h3 class="font-semibold mb-3">👥 Staff Summary</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-user-md text-green-600"></i> Doctors:
+                        </span>
+                        <span class="font-bold text-green-600">{{ total_doctors }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-user-nurse text-pink-600"></i> Nurses:
+                        </span>
+                        <span class="font-bold text-pink-600">{{ total_nurses }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-headset text-orange-600"></i> Receptionists:
+                        </span>
+                        <span class="font-bold text-orange-600">{{ total_receptionists }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-user-tie text-purple-600"></i> Admins:
+                        </span>
+                        <span class="font-bold text-purple-600">{{ total_admins }}</span>
+                    </div>
+                    <div class="border-t pt-2 mt-2 flex justify-between font-semibold">
+                        <span>Total Staff:</span>
+                        <span class="text-blue-600">{{ total_staff }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Summary -->
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-4">
+                <h3 class="font-semibold mb-3">📊 Today's Summary</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span>Appointments completed:</span>
+                        <span class="font-bold text-green-600">{{ completed_count }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Pending:</span>
+                        <span class="font-bold text-yellow-600">{{ todays_count|add:"-"|add:completed_count }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Cancelled:</span>
+                        <span class="font-bold text-red-600">{{ cancelled_count }}</span>
+                    </div>
+                </div>
+                {% if is_doctor %}
+                <div class="mt-3 text-xs text-gray-500 text-center">
+                    <i class="fas fa-info-circle mr-1"></i>Showing your practice data only
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

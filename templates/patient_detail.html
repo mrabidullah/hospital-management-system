@@ -1,0 +1,189 @@
+{% extends "header_footer.html" %}
+{% block homepage %}
+
+<div class="container mx-auto px-4 py-6 max-w-6xl">
+    
+    <!-- Back button -->
+    <a href="{% url 'patient_list' %}" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+        <i class="fas fa-arrow-left mr-2"></i> Back to Patients List
+    </a>
+
+    <!-- Patient Header -->
+    <div class="bg-gradient-to-r from-purple-900 to-purple-700 text-white p-6 rounded-2xl shadow-lg mb-6">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <span class="text-2xl font-bold text-purple-700">
+                        {{ patient.first_name|first }}{{ patient.last_name|first }}
+                    </span>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold">{{ patient.first_name }} {{ patient.last_name }}</h1>
+                    <p class="text-purple-100">Patient ID: #{{ patient.id }} • Registered: {{ patient.date_registered|date:"M d, Y" }}</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <a href="{% url 'create_appointment' %}?patient={{ patient.id }}" class="bg-white text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50">
+                    <i class="fas fa-calendar-plus mr-2"></i>New Appointment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Details Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left Column: Patient Info -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-circle text-purple-600"></i>
+                    Personal Information
+                </h2>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Full Name:</span>
+                        <span class="font-medium">{{ patient.first_name }} {{ patient.last_name }}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Email:</span>
+                        <span class="font-medium">{{ patient.email }}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Phone:</span>
+                        <span class="font-medium">{{ patient.contact_number }}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Date of Birth:</span>
+                        <span class="font-medium">{{ patient.date_of_birth|date:"M d, Y" }}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Gender:</span>
+                        <span class="font-medium">{{ patient.gender }}</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b">
+                        <span class="text-gray-600">Blood Group:</span>
+                        <span class="font-medium">{{ patient.blood_group|default:"Not specified" }}</span>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <span class="text-gray-600">Address:</span>
+                        <span class="font-medium text-right">{{ patient.address|default:"Not provided" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Appointments & Medical Records -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Appointments Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-purple-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-calendar-check"></i>
+                        Appointment History
+                    </h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="p-3 text-left">Date & Time</th>
+                                <th class="p-3 text-left">Doctor</th>
+                                <th class="p-3 text-left">Reason</th>
+                                <th class="p-3 text-left">Status</th>
+                                <th class="p-3 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            {% for appointment in appointments %}
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-3">
+                                    <div class="font-medium">{{ appointment.appointment_date|date:"M d, Y" }}</div>
+                                    <div class="text-sm text-gray-600">{{ appointment.appointment_date|time:"h:i A" }}</div>
+                                </td>
+                                <td class="p-3">
+                                    Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}
+                                </td>
+                                <td class="p-3">{{ appointment.reason|truncatechars:30 }}</td>
+                                <td class="p-3">
+                                    {% if appointment.status == 'Scheduled' %}
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Scheduled</span>
+                                    {% elif appointment.status == 'Completed' %}
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Completed</span>
+                                    {% elif appointment.status == 'Cancelled' %}
+                                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Cancelled</span>
+                                    {% endif %}
+                                </td>
+                                <td class="p-3">
+                                    <a href="{% url 'edit_appointment' appointment.id %}" class="text-blue-600 hover:text-blue-800 mr-2">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{% url 'delete_appointment' appointment.id %}" class="text-red-600 hover:text-red-800">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="p-8 text-center text-gray-500">
+                                    <i class="fas fa-calendar-times text-4xl mb-3 text-gray-400"></i>
+                                    <p class="text-lg">No appointments found</p>
+                                    <a href="{% url 'create_appointment' %}?patient={{ patient.id }}" class="inline-block mt-3 text-purple-600 hover:underline">
+                                        Schedule first appointment →
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Medical Records Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-green-600 p-4">
+                    <h2 class="text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-notes-medical"></i>
+                        Medical Records
+                    </h2>
+                </div>
+
+                <div class="divide-y">
+                    {% for record in medical_records %}
+                    <div class="p-4 hover:bg-gray-50">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="font-semibold text-green-700">Visit Date:</span>
+                                <span class="ml-2">{{ record.visit_date|date:"M d, Y h:i A" }}</span>
+                            </div>
+                            <span class="text-sm text-gray-500">Dr. {{ record.doctor.first_name }} {{ record.doctor.last_name }}</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="font-semibold text-gray-700">Diagnosis:</span>
+                            <p class="mt-1 text-gray-600">{{ record.diagnosis }}</p>
+                        </div>
+                        {% if record.prescription_notes %}
+                        <div>
+                            <span class="font-semibold text-gray-700">Prescription Notes:</span>
+                            <p class="mt-1 text-gray-600">{{ record.prescription_notes }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% empty %}
+                    <tr>
+                        <td colspan="1" class="p-8 text-center text-gray-500">
+                            <i class="fas fa-notes-medical text-4xl mb-3 text-gray-400"></i>
+                            <p class="text-lg">No medical records found</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
