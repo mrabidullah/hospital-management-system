@@ -229,24 +229,3 @@ python manage.py runserver
 - Set `DEBUG = False` in production
 
 
-##  Screenshots
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4f3d80a4-1d13-4981-89e7-17f31221bc02" width="45%" />
-  <img src="https://github.com/user-attachments/assets/435721c5-e2aa-4ddf-b0de-8fb23f97b9e3" width="45%" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/18b77a2e-c82f-4eb5-b16e-f8099055eb94" width="45%" />
-  <img src="https://github.com/user-attachments/assets/33597330-d051-4eff-bd5a-bf10b0ef05ec" width="45%" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/88933f87-56cb-4643-b1d4-53f872304f2b" width="45%" />
-  <img src="https://github.com/user-attachments/assets/9f70366e-b349-4a82-8e6d-ec73b14ceb5c" width="45%" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e3b35b60-07d4-4da2-91e2-e3385ceca90a" width="45%" />
-  <img src="https://github.com/user-attachments/assets/ebba4967-84b9-472b-9d24-a3f5c5116134" width="45%" />
-</p>
