@@ -43,12 +43,8 @@ It supports two main types of users:
 - Authentication: Django built-in system  
 - Session Management: Django sessions  
 
----
 
-## Project Structure
-
-
-
+##  Project Structure
 HOSPITAL/ (Root Directory)
 │
 ├── hospital/ # Core Project Settings
@@ -91,7 +87,7 @@ HOSPITAL/ (Root Directory)
 
 
 
----
+
 
 ## Views Overview (Core Logic)
 
