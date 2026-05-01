@@ -44,48 +44,47 @@ It supports two main types of users:
 - Session Management: Django sessions  
 
 
-##  Project Structure
-HOSPITAL/ (Root Directory)
-│
-├── hospital/ # Core Project Settings
-│ ├── init.py
-│ ├── asgi.py
-│ ├── settings.py # Register 'app_hospital' and 'patient'
-│ ├── urls.py # Main URL dispatcher
-│ └── wsgi.py
-│
-├── app_hospital/ # Main Hospital Logic (Staff, Pharmacy)
-│ ├── migrations/
-│ ├── init.py
-│ ├── admin.py
-│ ├── apps.py
-│ ├── forms.py # Forms for hospital staff
-│ ├── models.py # Data models for hospital resources
-│ ├── tests.py
-│ └── views.py # Staff dashboard & hospital logic
-│
-├── patient/ # Patient-Specific Management
-│ ├── migrations/
-│ ├── init.py
-│ ├── admin.py
-│ ├── forms.py # Appointment & registration forms
-│ ├── models.py # Patient & appointment models
-│ ├── tests.py
-│ └── views.py # Booking & patient history logic
-│
-├── templates/ # Global HTML templates
-│ ├── header_footer.html # Base layout
-│ └── ... # Other pages (home, login, dashboard)
-│
-├── static/ # CSS, JS, Images
-├── media/ # Uploaded files (reports, images)
-│
-├── db.sqlite3 # Default database (can switch to PostgreSQL)
-├── manage.py # Django command-line tool
-├── .gitignore # Ignored files
-└── README.md # Project documentation
+## 🧱 Project Structure
 
-
+    HOSPITAL/ (Root Directory)
+    │
+    ├── hospital/                     # Core Project Settings
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py              # Register 'app_hospital' and 'patient'
+    │   ├── urls.py                  # Main URL dispatcher
+    │   └── wsgi.py
+    │
+    ├── app_hospital/                # Main Hospital Logic (Staff, Pharmacy)
+    │   ├── migrations/
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── forms.py                 # Forms for hospital staff
+    │   ├── models.py                # Data models for hospital resources
+    │   ├── tests.py
+    │   └── views.py                 # Staff dashboard & hospital logic
+    │
+    ├── patient/                     # Patient-Specific Management
+    │   ├── migrations/
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── forms.py                 # Appointment & registration forms
+    │   ├── models.py                # Patient & appointment models
+    │   ├── tests.py
+    │   └── views.py                 # Booking & patient history logic
+    │
+    ├── templates/                   # Global HTML templates
+    │   ├── header_footer.html       # Base layout
+    │   └── ...                      # Other pages
+    │
+    ├── static/                      # CSS, JS, Images
+    ├── media/                       # Uploaded files
+    │
+    ├── db.sqlite3                   # Default database
+    ├── manage.py                    # Django CLI tool
+    ├── .gitignore
+    └── README.md
 
 
 
