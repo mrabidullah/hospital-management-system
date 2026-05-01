@@ -229,13 +229,24 @@ python manage.py runserver
 - Set `DEBUG = False` in production
 
 
-<img width="1887" height="905" alt="Screenshot 2026-04-30 174512" src="https://github.com/user-attachments/assets/4f3d80a4-1d13-4981-89e7-17f31221bc02" />
+##  Screenshots
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4f3d80a4-1d13-4981-89e7-17f31221bc02" width="45%" />
+  <img src="https://github.com/user-attachments/assets/435721c5-e2aa-4ddf-b0de-8fb23f97b9e3" width="45%" />
+</p>
 
-<img width="1904" height="733" alt="Screenshot 2026-04-30 174534" src="https://github.com/user-attachments/assets/435721c5-e2aa-4ddf-b0de-8fb23f97b9e3" />
-<img width="1856" height="717" alt="Screenshot 2026-04-30 174615" src="https://github.com/user-attachments/assets/18b77a2e-c82f-4eb5-b16e-f8099055eb94" />
-<img width="1728" height="637" alt="Screenshot 2026-04-30 174636" src="https://github.com/user-attachments/assets/33597330-d051-4eff-bd5a-bf10b0ef05ec" />
-<img width="1773" height="705" alt="Screenshot 2026-04-30 174710" src="https://github.com/user-attachments/assets/88933f87-56cb-4643-b1d4-53f872304f2b" />
-<img width="1852" height="719" alt="Screenshot 2026-04-30 174724" src="https://github.com/user-attachments/assets/9f70366e-b349-4a82-8e6d-ec73b14ceb5c" />
-<img width="1799" height="768" alt="Screenshot 2026-04-30 174818" src="https://github.com/user-attachments/assets/e3b35b60-07d4-4da2-91e2-e3385ceca90a" />
-<img width="696" height="661" alt="Screenshot 2026-04-30 174854" src="https://github.com/user-attachments/assets/ebba4967-84b9-472b-9d24-a3f5c5116134" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/18b77a2e-c82f-4eb5-b16e-f8099055eb94" width="45%" />
+  <img src="https://github.com/user-attachments/assets/33597330-d051-4eff-bd5a-bf10b0ef05ec" width="45%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/88933f87-56cb-4643-b1d4-53f872304f2b" width="45%" />
+  <img src="https://github.com/user-attachments/assets/9f70366e-b349-4a82-8e6d-ec73b14ceb5c" width="45%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e3b35b60-07d4-4da2-91e2-e3385ceca90a" width="45%" />
+  <img src="https://github.com/user-attachments/assets/ebba4967-84b9-472b-9d24-a3f5c5116134" width="45%" />
+</p>
