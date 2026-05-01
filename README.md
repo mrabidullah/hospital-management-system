@@ -44,7 +44,7 @@ It supports two main types of users:
 - Session Management: Django sessions  
 
 
-## 🧱 Project Structure
+##  Project Structure
 
     HOSPITAL/ (Root Directory)
     │
